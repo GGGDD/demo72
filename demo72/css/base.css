@@ -1,0 +1,127 @@
+@charset "UTF-8";
+@import "../lib/animate.css";
+/* 清除默认的外边距和内边距 */
+html,
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+img {
+  margin: 0;
+  padding: 0;
+}
+img,
+input,
+button,
+textarea {
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline-style: none;
+}
+ul,
+ol {
+  list-style: none;
+  font-size: 12px;
+}
+input {
+  font-family: "SimSun", "宋体";
+}
+select,
+input,
+textarea {
+  font-size: 12px;
+  margin: 0;
+}
+textarea {
+  resize: none;
+}
+img {
+  border: 0;
+  /* 可以防止 img 下边出现缝隙问题 */
+  vertical-align: middle;
+}
+body,
+html {
+  /* 将整个页面的字体, 默认重置 */
+  font-size: 12px;
+  color: #666;
+  background: #fff;
+  --themeColor: #fabbd8;
+}
+p,
+span,
+i {
+  font-size: 12px;
+}
+a {
+  color: #666;
+  text-decoration: none;
+  font-size: 12px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 12px;
+}
+/* 废物利用 1*/
+s,
+i,
+em {
+  font-style: normal;
+  text-decoration: none;
+}
+div {
+  font-size: 0;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  max-width: 527px;
+}
+.l50 {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.t50 {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cen {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.fill-mode {
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+@media screen and (min-width: 527px) {
+  html,
+  body {
+    font-size: 52.7px !important;
+  }
+}

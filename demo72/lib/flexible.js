@@ -1,0 +1,67 @@
+(function flexible(window, document) {
+  var docEl = document.documentElement
+  var dpr = window.devicePixelRatio || 1
+
+  // adjust body font size
+  function setBodyFontSize() {
+    if (document.body) {
+      document.body.style.fontSize = (12 * dpr) + 'px'
+    } else {
+      document.addEventListener('DOMContentLoaded', setBodyFontSize)
+    }
+  }
+  setBodyFontSize();
+
+  // set 1rem = viewWidth / 10
+  function setRemUnit() {
+    var rem = docEl.clientWidth / 10
+    docEl.style.fontSize = rem + 'px'
+  }
+
+  setRemUnit()
+
+  // reset rem unit on page resize
+  window.addEventListener('resize', setRemUnit)
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      setRemUnit()
+    }
+  })
+
+  // detect 0.5px supports
+  if (dpr >= 2) {
+    var fakeBody = document.createElement('body')
+    var testElement = document.createElement('div')
+    testElement.style.border = '.5px solid transparent'
+    fakeBody.appendChild(testElement)
+    docEl.appendChild(fakeBody)
+    if (testElement.offsetHeight === 1) {
+      docEl.classList.add('hairlines')
+    }
+    docEl.removeChild(fakeBody)
+  }
+}(window, document))
+
+
+var tool = {
+  aniCom: function (ele) {
+    var ele = this.splitStr(ele)
+    $(window).scroll(function () {
+      var winTop = $(window).scrollTop()
+      $(ele).each(function () {
+        if ($(this).offset().top < winTop + $(window).height() * 0.9) {
+          $(this).addClass('now')
+        } else if ($(this).offset().top - $(window).height() >= winTop) {
+          $(this).removeClass('now')
+        }
+      })
+    })
+  },
+  splitStr: function (ele) {
+    var arr = []
+    $(ele).children().each(function () {
+      arr.push('.' + $(this).attr('class'))
+    })
+    return arr.join();
+  }
+}
